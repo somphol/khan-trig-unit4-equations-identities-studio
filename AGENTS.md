@@ -4,7 +4,7 @@
 
 A static, offline teaching app for Khan Academy Trigonometry Unit 4. One page, three interactive studios: inverse functions with restricted domains, a Pythagorean-identity simplification lab, and an equation/identity practice sandbox. It produces no build output and talks to no server; it is not a Khan Academy clone, a course platform, or a graded assessment tool.
 
-Current release: **v1.0.1** (2026-11-03) — documentation and quality gates after the 1.0.0 app release.
+Current release: **v1.0.2** (2026-11-03) — reproducibility docs and headless acceptance checks after the 1.0.1 documentation release.
 
 Live copy: <https://somphol.github.io/khan-trig-unit4-equations-identities-studio/>
 Local master: `~/Projects/khan-trig-unit4-equations-identities-studio`
@@ -19,6 +19,9 @@ python3 -m http.server 8080
 # quality gates (also run in CI)
 node --check script.js
 node scripts/check.mjs
+
+# full browser acceptance (needs Node 22+ and Chrome)
+node scripts/browser-check.mjs
 
 # deploy = push to main; GitHub Pages serves the repo root
 git push origin main
@@ -38,7 +41,7 @@ Load order is `index.html` → `style.css` → `script.js`. `script.js` is one I
 6. Practice engine: templates, generators, parser, `renderPracticeCanvas`, `revealSteps`.
 7. Tabs (`showModule`), i18n (`applyI18n`), export, boot.
 
-Canonical detail — state shape, principal domains, identity step data, answer-set parsing, timer cleanup — is in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). `style.css` follows the semantic palette (`--sin`, `--cos`, `--tan`, `--one`, `--theta`). `state.json` is a historical build record, **not** runtime state.
+Canonical detail — state shape, principal domains, identity step data, answer-set parsing, timer cleanup — is in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). A step-by-step rebuild blueprint, exact content tables and the fixed pitfalls are in [docs/REPRODUCTION.md](docs/REPRODUCTION.md) and [docs/CONTENT.md](docs/CONTENT.md). `style.css` follows the semantic palette (`--sin`, `--cos`, `--tan`, `--one`, `--theta`). `state.json` is a historical build record, **not** runtime state.
 
 ## 4. Decisions and constraints
 

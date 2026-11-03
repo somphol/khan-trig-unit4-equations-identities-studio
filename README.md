@@ -2,7 +2,7 @@
 
 An interactive, bilingual companion for **Khan Academy Trigonometry, Unit 4: Trigonometric Equations & Identities**. Students discover why inverse functions need restricted domains, build algebraic simplifications one legal step at a time, and solve equations with every solution revealed on the unit circle.
 
-**Version 1.0.1** · [Live demo](https://somphol.github.io/khan-trig-unit4-equations-identities-studio/) · MIT · No build step
+**Version 1.0.2** · [Live demo](https://somphol.github.io/khan-trig-unit4-equations-identities-studio/) · MIT · No build step
 
 ![Screenshot of the inverse functions module](assets/hero.jpg)
 
@@ -46,6 +46,9 @@ Open <http://localhost:8080>. Opening `index.html` directly also works.
 | Document | Purpose |
 |----------|---------|
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | State, inverse engine, identity data, answer-set parser, extension recipes |
+| [docs/REPRODUCTION.md](docs/REPRODUCTION.md) | Step-by-step rebuild blueprint, exact rules, fixed pitfalls |
+| [docs/CONTENT.md](docs/CONTENT.md) | Identity, equation, badge and export inventories |
+| [docs/SESSION_LOG.md](docs/SESSION_LOG.md) | Build time, token accounting, fixes and publishing record |
 | [docs/DESIGN.md](docs/DESIGN.md) | Pedagogy, colour matrix, Thai glossary, interaction decisions |
 | [docs/TESTING.md](docs/TESTING.md) | Automated checks, verified matrix, manual regression list |
 | [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) | GitHub Pages setup, verification, rollback, custom domain |
@@ -63,11 +66,17 @@ Open <http://localhost:8080>. Opening `index.html` directly also works.
 ## Quality gates
 
 ```bash
-node --check script.js      # JavaScript syntax
-node scripts/check.mjs      # files, ids, tabs, i18n parity, colours, links, state
+node --check script.js           # JavaScript syntax
+node scripts/check.mjs           # files, ids, tabs, i18n parity, colours, links, state
+node scripts/browser-check.mjs   # 15 headless Chrome acceptance checks
 ```
 
-Both run in GitHub Actions on every push and pull request. The checker has no dependencies and verifies that the English and Thai dictionaries stay in sync, every referenced DOM id exists, three tabs and panels agree, local assets resolve, and runtime code contains no network APIs.
+The static checks run in GitHub Actions on every push and pull request. The
+browser check launches a temporary Chrome profile, drives the app over the
+DevTools Protocol and verifies inverse states, identity steps, all three
+practice modes, language switching, reload persistence, export and mobile
+overflow. It needs Node 22+ and a local Chrome/Chromium (`CHROME_BIN` overrides
+the detected path).
 
 ## How to use it
 
@@ -82,7 +91,8 @@ index.html                 HUD, three panels, sliders, practice form and bilingu
 style.css                  Palette, layout, canvas cards, choices, steps and responsive rules
 script.js                  State, i18n, inverse branches, identity engine, solver, export
 scripts/check.mjs          Dependency-free static release checks
-docs/                      Architecture, design, testing, deployment, a11y, release
+scripts/browser-check.mjs  Headless Chrome acceptance checks (no dependencies)
+docs/                      Architecture, reproduction, content, session, testing, deployment, a11y, release
 .github/                   CI, issue templates, PR template, CODEOWNERS
 state.json                 Build record: elapsed time, token usage, credits
 AGENTS.md                  Operating notes for the next developer or agent

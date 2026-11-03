@@ -39,7 +39,8 @@ const REQUIRED = [
   '.github/workflows/ci.yml',
   'docs/ARCHITECTURE.md', 'docs/DESIGN.md', 'docs/TESTING.md',
   'docs/DEPLOYMENT.md', 'docs/ACCESSIBILITY.md', 'docs/RELEASE.md',
-  'scripts/check.mjs'
+  'docs/REPRODUCTION.md', 'docs/CONTENT.md', 'docs/SESSION_LOG.md',
+  'scripts/check.mjs', 'scripts/browser-check.mjs'
 ];
 
 check('required files', () => {
@@ -50,6 +51,11 @@ check('required files', () => {
 
 check('script.js syntax', () => {
   execFileSync(process.execPath, ['--check', join(root, 'script.js')], { stdio: 'pipe' });
+  return 'node --check';
+});
+
+check('browser-check.mjs syntax', () => {
+  execFileSync(process.execPath, ['--check', join(root, 'scripts/browser-check.mjs')], { stdio: 'pipe' });
   return 'node --check';
 });
 

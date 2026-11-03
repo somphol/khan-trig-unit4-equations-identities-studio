@@ -8,6 +8,25 @@ All notable changes to this project are documented here. The format follows
 
 Nothing yet.
 
+## [1.0.2] — 2026-11-03
+
+### Added
+
+- `docs/REPRODUCTION.md`: a complete rebuild blueprint with exact mathematical
+  rules, drawing geometry, content tables, publishing steps and the pitfalls
+  already fixed.
+- `docs/CONTENT.md`: identity, equation, badge and export inventories.
+- `docs/SESSION_LOG.md`: build timeline, token accounting, defect log and
+  publishing record.
+- `scripts/browser-check.mjs`: 15 dependency-free headless Chrome acceptance
+  checks covering inverse states, identity steps, all practice modes, Thai,
+  reload, export and mobile overflow.
+
+### Changed
+
+- README and AGENTS now point at the reproducibility set and include the browser
+  check command.
+
 ## [1.0.1] — 2026-11-03
 
 ### Added
@@ -54,6 +73,7 @@ Nothing yet.
 - No runtime network requests, third-party scripts, cookies or analytics.
 - Progress never leaves the browser unless the learner exports it.
 
-[Unreleased]: https://github.com/somphol/khan-trig-unit4-equations-identities-studio/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/somphol/khan-trig-unit4-equations-identities-studio/compare/v1.0.2...HEAD
+[1.0.2]: https://github.com/somphol/khan-trig-unit4-equations-identities-studio/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/somphol/khan-trig-unit4-equations-identities-studio/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/somphol/khan-trig-unit4-equations-identities-studio/releases/tag/v1.0.0

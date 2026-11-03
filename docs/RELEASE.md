@@ -8,8 +8,8 @@ Semantic versioning:
 - **MINOR** — a new module, language, problem type or other user-facing feature.
 - **PATCH** — fixes, copy corrections, accessibility and documentation updates.
 
-The current release is **1.0.1** (2026-11-03), a documentation and quality-gate
-release after 1.0.0.
+The current release is **1.0.2** (2026-11-03), a reproducibility release after
+1.0.1 (documentation and quality gates) and 1.0.0 (the app).
 
 ## Checklist
 
@@ -36,9 +36,9 @@ release after 1.0.0.
 ### 3. Tag
 
 ```bash
-git tag -a v1.0.1 -m "v1.0.1 — documentation and quality gates"
+git tag -a v1.0.2 -m "v1.0.2 — reproducibility docs and browser checks"
 git push origin main
-git push origin v1.0.1
+git push origin v1.0.2
 ```
 
 ### 4. Publish the GitHub Release
